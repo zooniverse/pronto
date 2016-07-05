@@ -1,0 +1,22 @@
+postgres:
+  image: postgres:9.4
+  environment:
+    - "POSTGRES_USER=pronto"
+    - "POSTGRES_PASSWORD=pronto"
+  ports:
+    - "5432:5432"
+
+pronto:
+  dockerfile: Dockerfile
+  build: ./
+  volumes:
+    - ./:/app
+  ports:
+    - "4000:4000"
+  environment:
+    - "MIX_ENV=dev"
+    - "POSTGRES_USER=pronto"
+    - "POSTGRES_PASS=pronto"
+    - "POSTGRES_HOST=pg"
+  links:
+    - postgres:pg
