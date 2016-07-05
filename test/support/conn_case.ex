@@ -1,4 +1,4 @@
-defmodule Statistics.ConnCase do
+defmodule Pronto.ConnCase do
   @moduledoc """
   This module defines the test case to be used by
   tests that require setting up a connection.
@@ -20,23 +20,23 @@ defmodule Statistics.ConnCase do
       # Import conveniences for testing with connections
       use Phoenix.ConnTest
 
-      alias Statistics.Repo
+      alias Pronto.Repo
       import Ecto
       import Ecto.Changeset
       import Ecto.Query
 
-      import Statistics.Router.Helpers
+      import Pronto.Router.Helpers
 
       # The default endpoint for testing
-      @endpoint Statistics.Endpoint
+      @endpoint Pronto.Endpoint
     end
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Statistics.Repo)
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Pronto.Repo)
 
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(Statistics.Repo, {:shared, self()})
+      Ecto.Adapters.SQL.Sandbox.mode(Pronto.Repo, {:shared, self()})
     end
 
     {:ok, conn: Phoenix.ConnTest.build_conn()}

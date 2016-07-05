@@ -1,8 +1,8 @@
-defmodule Statistics.Mixfile do
+defmodule Pronto.Mixfile do
   use Mix.Project
 
   def project do
-    [app: :statistics,
+    [app: :pronto,
      version: "0.0.1",
      elixir: "~> 1.2",
      elixirc_paths: elixirc_paths(Mix.env),
@@ -17,7 +17,7 @@ defmodule Statistics.Mixfile do
   #
   # Type `mix help compile.app` for more information.
   def application do
-    [mod: {Statistics, []},
+    [mod: {Pronto, []},
      applications: [:phoenix, :phoenix_pubsub, :cowboy, :logger, :gettext,
                     :phoenix_ecto, :postgrex]]
   end

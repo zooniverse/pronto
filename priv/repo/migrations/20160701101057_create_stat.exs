@@ -1,4 +1,4 @@
-defmodule Statistics.Repo.Migrations.CreateStat do
+defmodule Pronto.Repo.Migrations.CreateStat do
   use Ecto.Migration
 
   def change do

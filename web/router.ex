@@ -1,11 +1,11 @@
-defmodule Statistics.Router do
-  use Statistics.Web, :router
+defmodule Pronto.Router do
+  use Pronto.Web, :router
 
   pipeline :api do
     plug :accepts, ["json"]
   end
 
-  scope "/api", Statistics do
+  scope "/api", Pronto do
     pipe_through :api
 
     get "/stats/:key", StatController, :index

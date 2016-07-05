@@ -1,12 +1,12 @@
-defmodule Statistics.StatView do
-  use Statistics.Web, :view
+defmodule Pronto.StatView do
+  use Pronto.Web, :view
 
   def render("index.json", %{stats: stats}) do
-    %{data: render_many(stats, Statistics.StatView, "stat.json")}
+    %{data: render_many(stats, Pronto.StatView, "stat.json")}
   end
 
   def render("show.json", %{stat: stat}) do
-    %{data: render_one(stat, Statistics.StatView, "stat.json")}
+    %{data: render_one(stat, Pronto.StatView, "stat.json")}
   end
 
   def render("stat.json", %{stat: stat}) do

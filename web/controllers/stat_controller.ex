@@ -1,9 +1,9 @@
 require IEx
 
-defmodule Statistics.StatController do
-  use Statistics.Web, :controller
+defmodule Pronto.StatController do
+  use Pronto.Web, :controller
 
-  alias Statistics.Stat
+  alias Pronto.Stat
 
   def index(conn, params) do
     stats = find_stats(params)
@@ -28,7 +28,7 @@ defmodule Statistics.StatController do
       {:error, changeset} ->
         conn
         |> put_status(:unprocessable_entity)
-        |> render(Statistics.ChangesetView, "error.json", changeset: changeset)
+        |> render(Pronto.ChangesetView, "error.json", changeset: changeset)
     end
   end
 
@@ -43,7 +43,7 @@ defmodule Statistics.StatController do
       {:error, changeset} ->
         conn
         |> put_status(:unprocessable_entity)
-        |> render(Statistics.ChangesetView, "error.json", changeset: changeset)
+        |> render(Pronto.ChangesetView, "error.json", changeset: changeset)
     end
   end
 

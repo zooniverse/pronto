@@ -1,4 +1,4 @@
-defmodule Statistics.ChannelCase do
+defmodule Pronto.ChannelCase do
   @moduledoc """
   This module defines the test case to be used by
   channel tests.
@@ -20,22 +20,22 @@ defmodule Statistics.ChannelCase do
       # Import conveniences for testing with channels
       use Phoenix.ChannelTest
 
-      alias Statistics.Repo
+      alias Pronto.Repo
       import Ecto
       import Ecto.Changeset
       import Ecto.Query
 
 
       # The default endpoint for testing
-      @endpoint Statistics.Endpoint
+      @endpoint Pronto.Endpoint
     end
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Statistics.Repo)
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Pronto.Repo)
 
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(Statistics.Repo, {:shared, self()})
+      Ecto.Adapters.SQL.Sandbox.mode(Pronto.Repo, {:shared, self()})
     end
 
     :ok

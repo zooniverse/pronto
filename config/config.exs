@@ -6,15 +6,15 @@
 use Mix.Config
 
 # General application configuration
-config :statistics,
-  ecto_repos: [Statistics.Repo]
+config :pronto,
+  ecto_repos: [Pronto.Repo]
 
 # Configures the endpoint
-config :statistics, Statistics.Endpoint,
+config :pronto, Pronto.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "wv/vgItAnLrYyk5LCr0XtpHOmut0krlK7y9btzdl1pPC1duYPUTvmv+95hXhs/XJ",
-  render_errors: [view: Statistics.ErrorView, accepts: ~w(json)],
-  pubsub: [name: Statistics.PubSub,
+  render_errors: [view: Pronto.ErrorView, accepts: ~w(json)],
+  pubsub: [name: Pronto.PubSub,
            adapter: Phoenix.PubSub.PG2]
 
 # Configures Elixir's Logger

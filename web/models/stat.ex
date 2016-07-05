@@ -1,5 +1,5 @@
-defmodule Statistics.Stat do
-  use Statistics.Web, :model
+defmodule Pronto.Stat do
+  use Pronto.Web, :model
 
   schema "stats" do
     field :key, :string

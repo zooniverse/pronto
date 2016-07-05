@@ -1,14 +1,14 @@
-defmodule Statistics.Endpoint do
-  use Phoenix.Endpoint, otp_app: :statistics
+defmodule Pronto.Endpoint do
+  use Phoenix.Endpoint, otp_app: :pronto
 
-  socket "/socket", Statistics.UserSocket
+  socket "/socket", Pronto.UserSocket
 
   # Serve at "/" the static files from "priv/static" directory.
   #
   # You should set gzip to true if you are running phoenix.digest
   # when deploying your static files in production.
   plug Plug.Static,
-    at: "/", from: :statistics, gzip: false,
+    at: "/", from: :pronto, gzip: false,
     only: ~w(css fonts images js favicon.ico robots.txt)
 
   # Code reloading can be explicitly enabled under the
@@ -33,8 +33,8 @@ defmodule Statistics.Endpoint do
   # Set :encryption_salt if you would also like to encrypt it.
   plug Plug.Session,
     store: :cookie,
-    key: "_statistics_key",
+    key: "_pronto_key",
     signing_salt: "8QNBdJxW"
 
-  plug Statistics.Router
+  plug Pronto.Router
 end

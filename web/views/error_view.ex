@@ -1,5 +1,5 @@
-defmodule Statistics.ErrorView do
-  use Statistics.Web, :view
+defmodule Pronto.ErrorView do
+  use Pronto.Web, :view
 
   def render("404.json", _assigns) do
     %{errors: %{detail: "Page not found"}}

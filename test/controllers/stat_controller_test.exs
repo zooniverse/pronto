@@ -1,7 +1,7 @@
-defmodule Statistics.StatControllerTest do
-  use Statistics.ConnCase
+defmodule Pronto.StatControllerTest do
+  use Pronto.ConnCase
 
-  alias Statistics.Stat
+  alias Pronto.Stat
   @valid_attrs %{data: %{"foo" => 1},
                  expires_at: %{year: 2015, month: 10, day: 20, hour: 14, minute: 0, second: 0},
                  key: "some content",
