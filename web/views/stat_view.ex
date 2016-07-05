@@ -10,8 +10,7 @@ defmodule Statistics.StatView do
   end
 
   def render("stat.json", %{stat: stat}) do
-    %{id: stat.id,
-      key: stat.key,
+    %{key: stat.key,
       data: stat.data,
       project_id: stat.project_id,
       workflow_id: stat.workflow_id,

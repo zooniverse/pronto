@@ -8,6 +8,8 @@ defmodule Statistics.Router do
   scope "/api", Statistics do
     pipe_through :api
 
-    resources "/stats", StatController
+    get "/stats/:key", StatController, :index
+    post "/stats/:key", StatController, :upsert
+    delete "/stats/:key", StatController, :delete
   end
 end
