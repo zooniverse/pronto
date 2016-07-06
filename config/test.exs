@@ -17,3 +17,8 @@ config :pronto, Pronto.Repo,
   database: "pronto_test",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
+
+config :guardian, Guardian,
+ secret_key: fn ->
+   JOSE.JWK.from_pem_file("config/doorkeeper-jwt-test.pem")
+ end

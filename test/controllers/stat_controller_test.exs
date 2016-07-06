@@ -1,5 +1,6 @@
 defmodule Pronto.StatControllerTest do
   use Pronto.ConnCase
+  import Phoenix
 
   alias Pronto.Stat
   @valid_attrs %{data: %{"foo" => 1},
@@ -9,7 +10,10 @@ defmodule Pronto.StatControllerTest do
   @invalid_attrs %{}
 
   setup %{conn: conn} do
-    {:ok, conn: put_req_header(conn, "accept", "application/json")}
+    {:ok, conn: conn
+      |> put_req_header("accept", "application/json")
+      |> put_req_header("authorization", "Bearer " <> get_jwt())
+    }
   end
 
   test "lists all entries on index", %{conn: conn} do
@@ -73,5 +77,15 @@ defmodule Pronto.StatControllerTest do
     conn = delete conn, stat_path(conn, :delete, stat.key)
     assert response(conn, 204)
     refute Repo.get(Stat, stat.id)
+  end
+
+  def get_jwt do
+    {:ok, jwt, _encoded_claims} = Guardian.encode_and_sign(%{
+      "data" => %{"admin" => true, "dname" => "martenveldthuis", "id" => 299778,
+        "login" => "martenveldthuis",
+        "scope" => ["public", "user", "project", "group", "collection",
+          "classification", "subject", "medium"]}
+    })
+    jwt
   end
 end

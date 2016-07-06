@@ -1,6 +1,6 @@
 use Mix.Config
 
-# For production, we configure the host to read the PORT
+# For staging, we configure the host to read the PORT
 # from the system environment. Therefore, you will need
 # to set PORT=80 before running your server.
 #
@@ -16,12 +16,12 @@ config :pronto, Pronto.Endpoint,
   url: [host: "example.com", port: 80],
   cache_static_manifest: "priv/static/manifest.json"
 
-# Do not print debug messages in production
+# Do not print debug messages in staging
 config :logger, level: :info
 
 config :guardian, Guardian,
  secret_key: fn ->
-   JOSE.JWK.from_pem_file("config/doorkeeper-jwt-production.pub")
+   JOSE.JWK.from_pem_file("config/doorkeeper-jwt-staging.pub")
  end
 
 # ## SSL Support
@@ -65,6 +65,7 @@ config :guardian, Guardian,
 #
 #     config :pronto, Pronto.Endpoint, root: "."
 
-# Finally import the config/prod.secret.exs
+# Finally import the config/stag.secret.exs
 # which should be versioned separately.
-import_config "prod.secret.exs"
+import_config "stag.secret.exs"
+

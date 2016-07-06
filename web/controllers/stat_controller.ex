@@ -3,6 +3,8 @@ require IEx
 defmodule Pronto.StatController do
   use Pronto.Web, :controller
 
+  plug Guardian.Plug.EnsureAuthenticated, [handler: __MODULE__] when action in [:upsert, :delete]
+
   alias Pronto.Stat
 
   def index(conn, params) do
@@ -17,8 +19,8 @@ defmodule Pronto.StatController do
     end
   end
 
-  defp create_stat(conn, %{"stat" => stat_params}) do
-    changeset = Stat.changeset(%Stat{}, stat_params)
+  defp create_stat(conn, %{"key" => key, "stat" => stat_params}) do
+    changeset = Stat.changeset(%Stat{key: key}, stat_params)
 
     case Repo.insert(changeset) do
       {:ok, stat} ->
@@ -54,6 +56,10 @@ defmodule Pronto.StatController do
         Repo.delete!(stat)
         send_resp(conn, :no_content, "")
     end
+  end
+
+  def unauthenticated(conn, _params) do
+    send_resp(conn, 401, "")
   end
 
   defp find_stat(params = %{"key" => key}) do

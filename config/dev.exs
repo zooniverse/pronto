@@ -29,3 +29,8 @@ config :pronto, Pronto.Repo,
   database: System.get_env("POSTGRES_DB")   || "pronto_dev",
   hostname: System.get_env("POSTGRES_HOST") || "localhost",
   pool_size: 10
+
+config :guardian, Guardian,
+ secret_key: fn ->
+   JOSE.JWK.from_pem_file("config/doorkeeper-jwt-development.pub")
+ end
