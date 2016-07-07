@@ -4,6 +4,7 @@ defmodule Pronto.StatController do
   use Pronto.Web, :controller
 
   plug Guardian.Plug.EnsureAuthenticated, [handler: __MODULE__] when action in [:upsert, :delete]
+  plug :ensure_admin when action in [:upsert, :delete]
 
   alias Pronto.Stat
 
@@ -60,6 +61,16 @@ defmodule Pronto.StatController do
 
   def unauthenticated(conn, _params) do
     send_resp(conn, 401, "")
+  end
+
+  def ensure_admin(conn, _params) do
+    {:ok, claims} = Guardian.Plug.claims(conn)
+
+    if !claims["data"]["admin"] do
+      conn |> send_resp(403, "") |> halt
+    else
+      conn
+    end
   end
 
   defp find_stat(params = %{"key" => key}) do
