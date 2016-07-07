@@ -15,3 +15,4 @@ erl_crash.dump
 # variables.
 /config/stag.secret.exs
 /config/prod.secret.exs
+/config/doorkeeper-*
