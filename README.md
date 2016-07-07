@@ -1,4 +1,4 @@
-# Pronto
+# Pronto ![Build Status](https://travis-ci.org/zooniverse/pronto.svg?branch=master)
 
 To start your Phoenix app:
 
