@@ -1,4 +1,4 @@
-# Statistics
+# Pronto
 
 To start your Phoenix app:
 
