@@ -1,3 +1,18 @@
 language: elixir
+
 elixir:
   - 1.2.5
+
+env:
+  - POSTGRES_USER=postgres
+
+before_script:
+  - psql -c 'create database pronto_test;' -U postgres
+
+services:
+  - postgresql
+
+addons:
+  postgresql: "9.4.1"
+
+

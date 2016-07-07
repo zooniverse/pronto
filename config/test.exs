@@ -12,10 +12,10 @@ config :logger, level: :warn
 # Configure your database
 config :pronto, Pronto.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: System.get_env("USER") || "postgres",
-  password: nil,
-  database: "pronto_test",
-  hostname: "localhost",
+  username: System.get_env("POSTGRES_USER") || System.get_env("USER") || "postgres",
+  password: System.get_env("POSTGRES_PASS") || nil,
+  database: System.get_env("POSTGRES_DB")   || "pronto_test",
+  hostname: System.get_env("POSTGRES_HOST") || "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
 
 config :guardian, Guardian,
