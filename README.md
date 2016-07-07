@@ -1,5 +1,19 @@
 # Pronto ![Build Status](https://travis-ci.org/zooniverse/pronto.svg?branch=master)
 
+## API documentation
+
+### `GET /api/stats/:KEY`
+
+| Parameter      | Description |
+| -------------- | ----------- |
+| project_id     | Filter by project |
+| workflow_id    | Filter by workflow |
+| subject_set_id | Filter by subject set |
+| subject_id     | Filter by subject |
+| user_id        | Filter by user |
+
+## Development
+
 To start your Phoenix app:
 
   * Install dependencies with `mix deps.get`
@@ -8,7 +22,6 @@ To start your Phoenix app:
 
 Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
 
-Ready to run in production? Please [check our deployment guides](http://www.phoenixframework.org/docs/deployment).
 
 ## Learn more
 
